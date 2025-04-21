@@ -1,7 +1,8 @@
 # Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import permission_required
-from .models import Document
+from .models import Document, Book
+
 
 @permission_required('bookshelf.can_view', raise_exception=True)
 def view_documents(request):
@@ -34,3 +35,9 @@ def delete_document(request, doc_id):
         document.delete()
         return redirect('view_documents')
     return render(request, 'bookshelf/delete_document.html', {'document': document})
+
+
+@permission_required('bookshelf.view_book', raise_exception=True)
+def book_list(request):
+    books = Book.objects.all()
+    return render(request, 'bookshelf/book_list.html', {'books': books})
