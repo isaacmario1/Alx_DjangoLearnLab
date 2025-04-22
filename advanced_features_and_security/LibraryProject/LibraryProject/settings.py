@@ -173,3 +173,5 @@ SECURE_BROWSER_XSS_FILTER = True
 # Redirect all HTTP traffic to HTTPS
 SECURE_SSL_REDIRECT = True
 
+# Trust the X-Forwarded-Proto header set by the proxy
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
