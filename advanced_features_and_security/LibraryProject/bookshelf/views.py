@@ -53,3 +53,8 @@ def create_book(request):
     else:
         form = BookForm()
     return render(request, 'bookshelf/form_example.html', {'form': form})
+
+
+def example_form_view(request):
+    form = ExampleForm()
+    return render(request, 'bookshelf/form_example.html', {'form': form})
