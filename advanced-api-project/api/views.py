@@ -6,6 +6,8 @@ from rest_framework import viewsets, generics, permissions
 
 from .models import Author, Book
 from .serializers import AuthorSerializer, BookSerializer
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
+
 
 
 # 🌐 Home endpoint
