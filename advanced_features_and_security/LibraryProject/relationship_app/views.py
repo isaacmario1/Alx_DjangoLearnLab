@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test, per
 
 from .models import Library, Book, UserProfile
 from .forms import BookForm
-
+from .models import Book
 
 
 # General Book Views
@@ -152,3 +152,10 @@ def delete_book_form(request, pk):
         book.delete()
         return redirect('list_books')
     return render(request, 'relationship_app/delete_book.html', {'book': book})
+
+
+from .models import Book
+
+def book_list(request):
+    books = Book.objects.all()
+    return render(request, 'bookshelf/book_list.html', {'books': books})
